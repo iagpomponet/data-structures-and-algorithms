@@ -1,66 +1,63 @@
 class Stack {
-  constructor(){
-    this.items = [];
-  }
+    constructor() {
+        this.count = 0;
+        this.items = {};
+    }
 
-  push(elements){
-    this.items.push(elements);
-  }
+    push(element) {
+        this.items[this.count] = element;
+        this.count++;
+    }
 
-  pop(){
-    return this.items.pop();
-  }
-  
-  peek(){
-    return this.items[this.items.length - 1];
-  }
+    size() {
+        return this.count;
+    }
 
-  isEmpty(){
-    return this.items.length == 0
-  }
+    isEmpty() {
+        return this.count === 0;
+    }
 
-  clear(){
-    this.items = [];
-  }
+    pop() {
+        if (this.isEmpty) {
+            return undefined;
+        }
 
-  size(){
-    return items.length
-  }
+        this.count--;
+        const topValue = this.items[this.count];
+        delete this.items[this.count - 1];
 
-  print(){
-    console.log(`${this.items}`);
-  }
-};
+        return topValue;
+    }
 
+    peek() {
+        if (this.isEmpty) {
+            return undefined;
+        }
 
-// funcao para transformar numeros em binarios
-function divideBy2(decimalNumber) {
+        return this.items[this.count - 1];
+    }
 
-  //a fila sera construida pelo resto das divisões
-  let remStack = new Stack();
-  let rem = ''
-  let binaryString = '';
+    clear() {
+        this.count = 0;
+        this.items = {};
+    }
 
+    toString() {
+        if (this.isEmpty()) { return "" };
 
-  // { 1 } - enquanto o numero decimal dos parametros for maior que zero
-  // { 2 } - insira o resto na fila
-  // { 3 } - sei la
-  
-  while (decimalNumber > 0){ // { 1 }
-    // resto da divisao do numero por 2
-    rem = Math.floor(decimalNumber % 2); 
-    // insere o resto na fila
-    remStack.push(rem); // { 2 }
-    // divide o numero por 2 novamente
-    decimalNumber = Math.floor(decimalNumber / 2); // { 3 }
+        let objString = `${this.items[0]}`;
 
-    console.log('decimalNumber :>> ', decimalNumber);
-  }
+        for (let i = 1; i <= this.count - 1; i++) {
+            objString = `${objString},${this.items[i]}`;
+        }
 
-  while(!remStack.isEmpty()){
-    binaryString += remStack.pop().toString();
-  }
-
-  return binaryString
-
+        return objString;
+    }
 }
+
+const teste = new Stack();
+
+teste.push(1);
+teste.push(2);
+
+console.log(`teste.count`, teste.toString());
