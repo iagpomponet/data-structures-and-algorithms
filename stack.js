@@ -22,7 +22,7 @@ class Stack {
     }
 
     pop() {
-        if (this.isEmpty) {
+        if (this.isEmpty()) {
             return undefined;
         }
 
@@ -59,10 +59,14 @@ class Stack {
     }
 }
 
+
 const teste = new Stack();
 
 teste.push(1);
 teste.push(2);
 
+// console.log(`teste.pop()`, teste.pop());
 
-console.log(`teste.count`, teste.toString());
+const binary = decimalToBinary(30);
+
+console.log(`binary`, binary)
