@@ -6,16 +6,16 @@ function validAnagram(str1, str2){
     const frequencyCounter1 = {};
     const frequencyCounter2 = {};
 
-    for(char of str1){
+    for(let char of str1){
       frequencyCounter1[char] = (frequencyCounter1[char] || 0) + 1;
     }
 
-    for(char of str2){
+    for(let char of str2){
       frequencyCounter2[char] = (frequencyCounter2[char] || 0) + 1;
     }
 
     // the keys are the letters
-    for(letter in frequencyCounter1){
+    for(let letter in frequencyCounter1){
       if(!(letter in frequencyCounter2)){
         return false
       }
