@@ -7,7 +7,6 @@ function areThereDuplicates(...args) {
     while(right < arr.length){
         console.log(arr[left], arr[right])
         if(arr[left] === arr[right]){
-            console.log("true")
             return true;
         } 
         
